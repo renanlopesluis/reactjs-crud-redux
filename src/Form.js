@@ -43,7 +43,10 @@ class Form extends React.Component{
         const list = this.state.list;
         list.push(this.state.pet);
         this.setState({
-            pet: {},
+            pet: {
+                name: '',
+                type:''
+            },
             list: list
         });
     }
@@ -52,8 +55,8 @@ class Form extends React.Component{
         return (
             <div>
                 <div>
-                    <input type="text" name="name" placeholder="Insert a name" onChange={this.onChangeName}/>
-                    <input type="text" name="type" placeholder="dog, cat, bird..." onChange={this.onChangeType}/>
+                    <input type="text" name="name" placeholder="Insert a name" value={this.state.pet.name} onChange={this.onChangeName}/>
+                    <input type="text" name="type" placeholder="dog, cat, bird..." value={this.state.pet.type} onChange={this.onChangeType}/>
                     <button type="button" onClick={this.onSave}>Save</button>
                 </div>
                 <div>
