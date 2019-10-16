@@ -21,6 +21,7 @@ class Form extends React.Component{
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onSave = this.onSave.bind(this);
+        this.onClear = this.onClear.bind(this);
     }
 
     onChangeName(event){   
@@ -51,6 +52,16 @@ class Form extends React.Component{
         });
     }
 
+    onClear(event){
+        this.setState({
+            pet: {
+                name: '',
+                type:''
+            },
+            list: []
+        });
+    }
+
     render(){
         return (
             <div>
@@ -58,6 +69,7 @@ class Form extends React.Component{
                     <input type="text" name="name" placeholder="Insert a name" value={this.state.pet.name} onChange={this.onChangeName}/>
                     <input type="text" name="type" placeholder="dog, cat, bird..." value={this.state.pet.type} onChange={this.onChangeType}/>
                     <button type="button" onClick={this.onSave}>Save</button>
+                    <button type="button" onClick={this.onClear}>Clear List</button>
                 </div>
                 <div>
                     <table>
