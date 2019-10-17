@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Form from './Form';
+import PetRegisterComponent from './components/PetRegister/PetRegisterComponent';
 
 function App() {
   return (
     <div className="App">
-      <Form/>
+      <PetRegisterComponent/>
     </div>
   );
 }

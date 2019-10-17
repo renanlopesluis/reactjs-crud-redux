@@ -11,3 +11,99 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.navbar{
+  display: initial !important;
+  position: relative !important;
+  margin-top: 0px !important;
+  margin-right: 0px !important;
+  margin-left: 5%!important; 
+  border: 0px !important;
+  background: transparent !important;
+  padding: .5rem 1rem !important;
+}
+
+.main{
+  text-align: center;
+  font-family: cursive;
+  margin-top: 25px;;
+  margin-bottom: 10px;;
+}
+.general{
+  background-image:url('./assets/images/pets.jpg');
+}
+.container{
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 7px rgba(0,0,0,0.4);
+  background-color:rgb(226, 222, 188);
+  background:rgba(255,250,205,0.5)
+}
+span.input-group-addon  {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+a{
+  color:#495057;
+}
+.input-group {
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+.filter{
+  width: 40%;
+  padding: 10px;
+  margin-left: 77px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+/************************************ button *************************************/
+.btn-primary{
+  color: #fff;
+  background-color: #155724;
+  border-color: #155724 ;
+  margin-top:0px;
+}
+.btn-primary:disabled{
+  background-color: #155724;
+  border-color: #155724;
+}
+.btn-primary:disabled:hover{
+  background-color: #155724;
+  border-color: #155724;
+}
+.btn-primary:hover{
+  background-color:#d98200;
+  border-color:#d98200;
+}
+
+.trash{
+  width: 30px;
+  height: 30px;
+  float: right;
+}
+
+/************************************ nav bar *************************************/
+.navbar{
+  margin-top: 10px;
+  margin-right:5%;
+  margin-left: 5%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background:rgba(255,250,205,0.5)
+}
+.navbar-light .navbar-nav >.nav-link {
+  color:#495057;
+}
+a.nav-link{
+  font-style: oblique;
+  font-size: larger;
+}
+.navbar img{
+  width: 50px;
+}
+
+/**********************************  **********************************/
