@@ -10,13 +10,10 @@ class PetRegisterComponent extends React.Component{
     constructor(pros){
         super(pros);
         this.state = {
-            pet: this.buildPet(null, null, {}, null),
-            list: []
+            pet: this.buildPet(null, null, {}, null)
         }
  
-        this.list();
         this.onSave = this.onSave.bind(this);
-        this.onRemove = this.onRemove.bind(this);
     }
 
     componentDidMount(){
@@ -33,14 +30,6 @@ class PetRegisterComponent extends React.Component{
                 this.list();
             }
         )
-    }
-
-    onRemove(id){
-        this.service.remove(id).then(
-            response=>{
-                this.list();
-            }
-        );
     }
 
     buildPet(id, name, type, age){
@@ -64,16 +53,6 @@ class PetRegisterComponent extends React.Component{
             case '2': return 'Cat';
             case '3': return 'Dog';
         }
-    }
-
-    list(){
-        this.service.list().then((response)=>response.json())
-        .then((responseJson) => {
-            this.setState({
-                pet: this.buildPet(null, null, {}, null),
-                list: responseJson
-            })
-        });
     }
     
     render(){
@@ -104,35 +83,6 @@ class PetRegisterComponent extends React.Component{
                             </div>
                             <Button color="primary" onClick={this.onSave}>Save</Button>
                         </form>
-                    </div>
-                    <br />
-                    <div class="form-group">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Age</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {
-                                this.state.list.map((pet, index)=>
-                                        (
-                                            <tr>
-                                                <td>{pet.id}</td>
-                                                <td>{pet.name}</td>
-                                                <td>{pet.type}</td>
-                                                <td>{pet.age}</td>
-                                                <td> <Button color="danger" onClick={()=>this.onRemove(pet.id)}>Remove</Button></td>
-                                            </tr>
-                                        )
-                                    )
-                            }
-                            </tbody>
-                        </table>
                     </div>
                 </section>
             </div>
