@@ -1,12 +1,13 @@
 import axios from 'axios'
+
 export default class CrudService {
+
+    baseUrl = 'http://localhost:8080/petstore/';
     urls = [];
     
     constructor(urls){
         this.urls = urls;
     }
-    
-    baseUrl = 'http://localhost:8080/petstore/';
 
     list(){
         return fetch(this.baseUrl.concat(this.urls[1]));

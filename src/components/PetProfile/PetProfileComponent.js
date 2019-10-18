@@ -1,17 +1,23 @@
 import React from 'react';
 import './PetProfile.css';
 import PetService from '../../services/pet.service.js';
+import BasicCaringService from '../../services/basicCaring.service.js';
 import { Button } from 'reactstrap';
 
 class PetProfileComponent extends React.Component{
     
     service = new PetService();
+    basicCaringService = new BasicCaringService();
     
     constructor(pros){
         super(pros);
         this.state = {
-            pet: {}
+            pet: {},
+            services: this.basicCaringService.getServiceOptions(),
+            basicServices: [],
+            selectedServiceOption: null
         }
+        this.onServiceChange.bind(this)
     }
 
     componentDidMount() {
@@ -19,13 +25,19 @@ class PetProfileComponent extends React.Component{
         this.loadPet(params.id);
     }
 
-    onSave(event){;
-        event.preventDefault();
-        let type = this.buildType(this.refs.type.value);
-        let pet = this.buildPet(this.state.pet.id, this.refs.name.value, type, this.refs.age.value);
-        this.service.save(pet).then(
+    onServiceChange(code){
+        const basicServices = this.basicCaringService.getServices(code); 
+        this.setState({
+            basicServices: basicServices,
+            selectedServiceOption: code
+        })  
+    }
+
+    onExecuteService(){
+        this.basicCaringService.executeService(this.state.selectedServiceOption, this.state.pet.id, this.refs.basicServices.value).then(
             response=>{
-                this.refs.name.focus();
+                if(response && response.data)
+                    alert(response.data.message);
             }
         )
     }
@@ -59,6 +71,34 @@ class PetProfileComponent extends React.Component{
                                 <label for="name">Age</label>
                                 <input type="number" id="age" value={this.state.pet.age}
                                     class="form-control" placeholder="age" readOnly required/>
+                            </div>
+
+                            <span class="input-group-addon">
+                                {
+                                    this.state.services.map((service)=>
+                                        (
+                                            <label class="radio-inline">
+                                                <input type="radio" ref="serviceOption" ref={service.code} onChange={()=>this.onServiceChange(service.code)} checked={this.state.selectedServiceOption === service.code}/>
+                                                <i>{service.description}</i>
+                                            </label>    
+                                        )
+                                    )
+                                }
+                            </span>
+                            <div>
+                                <label for="type">Service type:</label>
+                                <select class="form-control" name="basicServices" ref="basicServices" required>
+                                {  
+                                    this.state.basicServices.map((service)=>
+                                        (
+                                            
+                                            <option value={service.code}>{service.description}</option>
+                                        
+                                        )
+                                    )
+                                 }
+                                </select>  
+                                <button  type="button" class="btn btn-primary" onClick={this.onExecuteService.bind(this)}>OK</button>
                             </div>
                         </form>
                     </div>
