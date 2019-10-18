@@ -12,8 +12,23 @@ export default class CrudService {
         return fetch(this.baseUrl.concat(this.urls[1]));
     }
 
-    save(pet){
-        return axios.post(this.baseUrl.concat(this.urls[0]), pet);
+    get(id){
+        return axios.get(this.baseUrl.concat(this.urls[0]), {params:{id: id }});
+    }
+
+    save(entity){
+        if(entity.id)
+            return this.update(entity);
+        else
+            return this.insert(entity);
+    }
+
+    insert(entity){
+        return axios.post(this.baseUrl.concat(this.urls[0]), entity);
+    }
+
+    update(entity){
+        return axios.put(this.baseUrl.concat(this.urls[0]), entity);
     }
 
     remove(id){

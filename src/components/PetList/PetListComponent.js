@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './PetList.css';
 import PetService from '../../services/pet.service.js';
 import { Button } from 'reactstrap';
@@ -6,7 +7,7 @@ import { Button } from 'reactstrap';
 class PetListComponent extends React.Component{
     
     service = new PetService();
-    
+
     constructor(pros){
         super(pros);
         this.state = {
@@ -28,9 +29,9 @@ class PetListComponent extends React.Component{
 
     list(){
         this.service.list().then((response)=>response.json())
-        .then((responseJson) => {
+        .then((pets) => {
             this.setState({
-                pets: responseJson
+                pets: pets
             })
         });
     }
@@ -74,7 +75,10 @@ class PetListComponent extends React.Component{
                                                     <td>{pet.name}</td>
                                                     <td>{pet.type}</td>
                                                     <td>{pet.age}</td>
-                                                    <td> <Button color="danger" onClick={()=>this.onRemove(pet.id)}>Remove</Button></td>
+                                                    <td> 
+                                                        <Button color="danger" onClick={()=>this.onRemove(pet.id)}>Remove</Button>
+                                                        <Link to={{ pathname:'/pet/'+ pet.id }} class="btn btn-success">Profile</Link>
+                                                    </td>
                                                 </tr>
                                             )
                                         )

@@ -1,17 +1,21 @@
 import React from 'react';
 import './PetRegister.css';
 import PetService from '../../services/pet.service.js';
+import PetTypeService from '../../services/petType.service.js';
 import { Button } from 'reactstrap';
 
 class PetRegisterComponent extends React.Component{
     
     service = new PetService();
+    petTypeService = new PetTypeService();
     
     constructor(pros){
         super(pros);
         this.state = {
-            pet: this.buildPet(null, null, {}, null)
+            pet: this.buildPet(null, null, {}, null),
+            types: []
         }
+        this.loadTypes();
     }
 
     componentDidMount(){
@@ -20,13 +24,19 @@ class PetRegisterComponent extends React.Component{
 
     onSave(event){;
         event.preventDefault();
-        let type = this.buildType(this.refs.type.value);
-        let pet = this.buildPet(null, this.refs.name.value, type, this.refs.age.value);
+        let pet = this.buildPet(null, this.refs.name.value, this.buildType(this.refs.type.value, this.refs.type.label), this.refs.age.value);
         this.service.save(pet).then(
             response=>{
                 this.refs.name.focus();
             }
         )
+    }
+
+    buildType(id, description){
+        return {
+            id: id,
+            description: description
+        }
     }
 
     buildPet(id, name, type, age){
@@ -37,19 +47,14 @@ class PetRegisterComponent extends React.Component{
             age: age
         }
     }
-    buildType(id){
-        return  {
-            id: id,
-            description: this.getTypeDescription(id)
-        }
-    }
-
-    getTypeDescription(id){
-        switch(id){
-            case '1': return 'Bird';
-            case '2': return 'Cat';
-            case '3': return 'Dog';
-        }
+    
+    loadTypes(){
+        this.petTypeService.list().then((response)=>response.json())
+        .then((types) => {
+            this.setState({
+                types: types
+            })
+        });
     }
     
     render(){
@@ -66,10 +71,14 @@ class PetRegisterComponent extends React.Component{
                             </div>
                             <div class="form-group">
                                 <label for="type">Type</label>
-                                <select class="form-control" required ref="type" required>
-                                    <option value="1">Bird</option>
-                                    <option value="2">Cat</option>
-                                    <option value="3">Dog</option>
+                                <select class="form-control" name="type" required ref="type" required>
+                                {
+                                    this.state.types.map((type)=>
+                                        (
+                                            <option value={type.id}>{type.description}</option>
+                                        )
+                                    )
+                                }
                                 </select> 
                             </div>
                             <div class="form-group">
