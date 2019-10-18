@@ -12,8 +12,6 @@ class PetRegisterComponent extends React.Component{
         this.state = {
             pet: this.buildPet(null, null, {}, null)
         }
- 
-        this.onSave = this.onSave.bind(this);
     }
 
     componentDidMount(){
@@ -27,7 +25,6 @@ class PetRegisterComponent extends React.Component{
         this.service.save(pet).then(
             response=>{
                 this.refs.name.focus();
-                this.list();
             }
         )
     }
@@ -81,7 +78,7 @@ class PetRegisterComponent extends React.Component{
                                     class="form-control" placeholder="age"
                                     required/>
                             </div>
-                            <Button color="primary" onClick={this.onSave}>Save</Button>
+                            <Button color="primary" onClick={this.onSave.bind(this)}>Save</Button>
                         </form>
                     </div>
                 </section>

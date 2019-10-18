@@ -12,17 +12,6 @@ code {
     monospace;
 }
 
-.navbar{
-  display: initial !important;
-  position: relative !important;
-  margin-top: 0px !important;
-  margin-right: 0px !important;
-  margin-left: 5%!important; 
-  border: 0px !important;
-  background: transparent !important;
-  padding: .5rem 1rem !important;
-}
-
 .main{
   text-align: center;
   font-family: cursive;
@@ -48,8 +37,10 @@ a{
   color:#495057;
 }
 .input-group {
-  width: 60%;
+  width: 60% !important;
   margin-bottom: 20px;
+  margin-left: 0px;
+
 }
 
 .filter{
@@ -91,9 +82,9 @@ a{
   margin-top: 10px;
   margin-right:5%;
   margin-left: 5%;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background:rgba(255,250,205,0.5)
+  border: 0px !important;
+  background-color: transparent !important;
+  margin-left: 17px;
 }
 .navbar-light .navbar-nav >.nav-link {
   color:#495057;

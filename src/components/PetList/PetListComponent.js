@@ -10,7 +10,8 @@ class PetListComponent extends React.Component{
     constructor(pros){
         super(pros);
         this.state = {
-            list: []
+            pets: [],
+            search: ''
         }
  
         this.list();
@@ -29,45 +30,60 @@ class PetListComponent extends React.Component{
         this.service.list().then((response)=>response.json())
         .then((responseJson) => {
             this.setState({
-                list: responseJson
+                pets: responseJson
             })
         });
     }
+
+    onSearch(event){
+        this.setState({search: event.target.value.substr(0,20)});
+    }
     
     render(){
+        let filteredPets = this.state.pets.filter(
+            (pet) => {
+                return pet && pet.name.toLowerCase().indexOf(this.state.search) !== -1;
+            }
+        );
         return (
-            <div class="container">
-                <h2 class="main">Pet List</h2>
-                <section>
-                    <div class="form-group">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Age</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {
-                                this.state.list.map((pet, index)=>
-                                        (
-                                            <tr>
-                                                <td>{pet.id}</td>
-                                                <td>{pet.name}</td>
-                                                <td>{pet.type}</td>
-                                                <td>{pet.age}</td>
-                                                <td> <Button color="danger" onClick={()=>this.onRemove(pet.id)}>Remove</Button></td>
-                                            </tr>
+            <div>
+                <div class="input-group">
+                    <input type="text" class="form-control filter" id="filterName" name="filterName" 
+                    placeholder="search pets..." onChange={this.onSearch.bind(this)} value={this.state.search}/>
+                </div>
+                <div class="container">
+                    <h2 class="main">Pets</h2>
+                    <section>
+                        <div class="form-group">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Age</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {
+                                    filteredPets.map((pet)=>
+                                            (
+                                                <tr>
+                                                    <td>{pet.id}</td>
+                                                    <td>{pet.name}</td>
+                                                    <td>{pet.type}</td>
+                                                    <td>{pet.age}</td>
+                                                    <td> <Button color="danger" onClick={()=>this.onRemove(pet.id)}>Remove</Button></td>
+                                                </tr>
+                                            )
                                         )
-                                    )
-                            }
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
             </div>
         );
     }
