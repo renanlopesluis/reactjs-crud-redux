@@ -17,7 +17,7 @@ class PetProfileComponent extends React.Component{
             basicServices: [],
             selectedServiceOption: null
         }
-        this.onServiceChange.bind(this)
+        this.onServiceChange.bind(this);
     }
 
     componentDidMount() {
@@ -30,7 +30,7 @@ class PetProfileComponent extends React.Component{
         this.setState({
             basicServices: basicServices,
             selectedServiceOption: code
-        })  
+        });  
     }
 
     onExecuteService(){
@@ -39,15 +39,15 @@ class PetProfileComponent extends React.Component{
                 if(response && response.data)
                     alert(response.data.message);
             }
-        )
+        );
     }
 
     loadPet(id){
         this.service.get(id).then(response=>{
             this.setState({
                 pet: response.data
-            })
-        })
+            });
+        });
     }
     
     render(){

@@ -40,7 +40,7 @@ class PetRegisterComponent extends React.Component{
         .then((types) => {
             this.setState({
                 types: types
-            })
+            });
         });
     }
     

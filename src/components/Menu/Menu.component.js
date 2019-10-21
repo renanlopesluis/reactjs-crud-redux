@@ -25,7 +25,6 @@ class MenuComponent extends React.Component{
                         <Link to={{ pathname: '/list'}} class="nav-link">Pets</Link>
                     </li>
                 </ul>
-            
           </div>
         </nav>
      </div>
