@@ -2,6 +2,7 @@ import React from 'react';
 import './PetRegister.css';
 import PetService from '../../services/pet.service.js';
 import PetTypeService from '../../services/petType.service.js';
+import Menu from '../Menu/Menu.component.js';
 import { Button } from 'reactstrap';
 
 class PetRegisterComponent extends React.Component{
@@ -59,38 +60,41 @@ class PetRegisterComponent extends React.Component{
     
     render(){
         return (
-            <div class="container">
-                <h2 class="main">Pet Register</h2>
-                <section>
-                    <div class="container">
-                        <form ref="petForm" method="post" >
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" ref="name"
-                                    class="form-control" placeholder="name" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="type">Type</label>
-                                <select class="form-control" name="type" required ref="type" required>
-                                {
-                                    this.state.types.map((type)=>
-                                        (
-                                            <option value={type.id}>{type.description}</option>
+            <div>
+                <Menu/>
+                <div class="container">
+                    <h2 class="main">Pet Register</h2>
+                    <section>
+                        <div class="container">
+                            <form ref="petForm" method="post" >
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" ref="name"
+                                        class="form-control" placeholder="name" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="type">Type</label>
+                                    <select class="form-control" name="type" ref="type" required>
+                                    {
+                                        this.state.types.map((type)=>
+                                            (
+                                                <option value={type.id}>{type.description}</option>
+                                            )
                                         )
-                                    )
-                                }
-                                </select> 
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Age</label>
-                                <input type="number" id="age" ref="age"
-                                    class="form-control" placeholder="age"
-                                    required/>
-                            </div>
-                            <Button color="primary" onClick={this.onSave.bind(this)}>Save</Button>
-                        </form>
-                    </div>
-                </section>
+                                    }
+                                    </select> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Age</label>
+                                    <input type="number" id="age" ref="age"
+                                        class="form-control" placeholder="age"
+                                        required/>
+                                </div>
+                                <Button color="primary" onClick={this.onSave.bind(this)}>Save</Button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
             </div>
         );
     }

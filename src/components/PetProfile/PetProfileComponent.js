@@ -2,7 +2,6 @@ import React from 'react';
 import './PetProfile.css';
 import PetService from '../../services/pet.service.js';
 import BasicCaringService from '../../services/basicCaring.service.js';
-import { Button } from 'reactstrap';
 
 class PetProfileComponent extends React.Component{
     
@@ -78,7 +77,7 @@ class PetProfileComponent extends React.Component{
                                     this.state.services.map((service)=>
                                         (
                                             <label class="radio-inline">
-                                                <input type="radio" ref="serviceOption" ref={service.code} onChange={()=>this.onServiceChange(service.code)} checked={this.state.selectedServiceOption === service.code}/>
+                                                <input type="radio" ref="serviceOption" onChange={()=>this.onServiceChange(service.code)} checked={this.state.selectedServiceOption === service.code}/>
                                                 <i>{service.description}</i>
                                             </label>    
                                         )

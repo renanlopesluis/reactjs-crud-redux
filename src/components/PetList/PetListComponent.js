@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './PetList.css';
 import PetService from '../../services/pet.service.js';
 import { Button } from 'reactstrap';
+import Menu from '../Menu/Menu.component.js';
 
 class PetListComponent extends React.Component{
     
@@ -48,6 +49,7 @@ class PetListComponent extends React.Component{
         );
         return (
             <div>
+                <Menu/>
                 <div class="input-group">
                     <input type="text" class="form-control filter" id="filterName" name="filterName" 
                     placeholder="search pets..." onChange={this.onSearch.bind(this)} value={this.state.search}/>
