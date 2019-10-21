@@ -2,6 +2,8 @@ import React from 'react';
 import './PetRegister.css';
 import PetService from '../../services/pet.service.js';
 import PetTypeService from '../../services/petType.service.js';
+import PetBuilder from "../../builder/PetBuilder.js";
+import PetTypeBuilder from "../../builder/PetTypeBuilder.js";
 import Menu from '../Menu/Menu.component.js';
 import { Button } from 'reactstrap';
 
@@ -13,7 +15,7 @@ class PetRegisterComponent extends React.Component{
     constructor(pros){
         super(pros);
         this.state = {
-            pet: this.buildPet(null, null, {}, null),
+            pet: PetBuilder.build(null, null, {}, null),
             types: []
         }
         this.loadTypes();
@@ -25,28 +27,12 @@ class PetRegisterComponent extends React.Component{
 
     onSave(event){;
         event.preventDefault();
-        let pet = this.buildPet(null, this.refs.name.value, this.buildType(this.refs.type.value, this.refs.type.label), this.refs.age.value);
+        let pet = PetBuilder.build(null, this.refs.name.value, PetTypeBuilder.build(this.refs.type.value, this.refs.type.label), this.refs.age.value);
         this.service.save(pet).then(
             response=>{
                 this.refs.name.focus();
             }
         )
-    }
-
-    buildType(id, description){
-        return {
-            id: id,
-            description: description
-        }
-    }
-
-    buildPet(id, name, type, age){
-        return  {
-            id: id,
-            name: name,
-            type: type,
-            age: age
-        }
     }
     
     loadTypes(){

@@ -1,0 +1,21 @@
+/************************************ nav bar *************************************/
+.navbar{
+    margin-top: 10px;
+    margin-right:5%;
+    margin-left: 5%;
+    border: 0px !important;
+    background-color: transparent !important;
+    margin-left: 17px;
+  }
+  .navbar-light .navbar-nav >.nav-link {
+    color:#495057;
+  }
+  a.nav-link{
+    font-style: oblique;
+    font-size: larger;
+  }
+  .navbar img{
+    width: 50px;
+  }
+  
+  /**********************************  **********************************/
