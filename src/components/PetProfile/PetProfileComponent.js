@@ -62,17 +62,17 @@ class PetProfileComponent extends React.Component{
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" id="name" value={this.state.pet.name}
-                                        class="form-control" placeholder="name" required readOnly/>
+                                        class="form-control" placeholder="name" readOnly/>
                                 </div>
                                 <div class="form-group">
                                     <label for="type">Type</label>
                                     <input type="text" id="type" value={this.state.pet.type}
-                                        class="form-control" placeholder="type" required readOnly/>
+                                        class="form-control" placeholder="type" readOnly/>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Age</label>
                                     <input type="number" id="age" value={this.state.pet.age}
-                                        class="form-control" placeholder="age" readOnly required/>
+                                        class="form-control" placeholder="age" readOnly />
                                 </div>
 
                                 <span class="input-group-addon">
