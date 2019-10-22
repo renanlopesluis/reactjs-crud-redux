@@ -4,7 +4,6 @@ import BasicCaringWorkParent from './BasicCaringWorkParent.js';
 
 export default class BasicCaringWorkComponent extends React.Component{
 
-   
     render(){
         return (
             <React.Fragment>

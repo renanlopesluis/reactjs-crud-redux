@@ -1,4 +1,6 @@
 import axios from 'axios'
+import WorkListFactory from '../factories/WorkListFactory';
+import WorkOptionsList from '../models/WorkOptionsList.js';
 
 export default class BasicCaringService {
 
@@ -11,8 +13,6 @@ export default class BasicCaringService {
  
   constructor() { 
     this.loadWorkOptions();
-    this.loadBathTypes();
-    this.loadHairCareTypes();
   }
 
   getWorkOptions(){
@@ -20,11 +20,7 @@ export default class BasicCaringService {
   }
 
   getWorks(codeService){
-    switch(codeService){
-      case 1: return this.bathTypes;
-      case 2: return this.hairCareTypes;
-      default: return [];
-    }
+    return WorkListFactory.instance(codeService);
   }
 
   executeWork(basiceServiceCode, petId, serviceCode){
@@ -44,49 +40,6 @@ export default class BasicCaringService {
   }
 
   loadWorkOptions(){
-    this.workOptions = [
-      {
-        code: 1,
-        description: "Bath"
-      },
-      {
-        code: 2,
-        description: "Hair Care"
-      }
-    ]
-  }
-
-  loadHairCareTypes(){
-    this.hairCareTypes = [
-      {
-        code: 1,
-        description: "Short hair"
-      },
-      {
-        code: 2,
-        description: "Long hair"
-      }
-    ]
-  }
-
-  loadBathTypes(){
-    this.bathTypes = [
-      {
-        code: 1,
-        description: "Dry bath"
-      },
-      {
-        code: 2,
-        description: "Water bath"
-      },
-      {
-        code: 3,
-        description: "Perfumeful bath"
-      },
-      {
-        code: 4,
-        description: "Perfumeless bath"
-      }
-    ]
+    this.workOptions = WorkOptionsList.getList();
   }
 }
