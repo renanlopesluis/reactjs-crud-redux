@@ -14,7 +14,7 @@ export default class BasicCaringWorkParent extends React.Component{
             selectedWorkOption: null
         }
 
-        this.onChange.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     onChange(code){

@@ -10,6 +10,7 @@ export default class BasicCaringWorkChild extends React.Component{
         this.state = {
             selectedWorkOption: 0
         }
+        this.onExecuteWork = this.onExecuteWork.bind(this);
     }
 
     loadBasicWorks(workCode){
@@ -19,12 +20,14 @@ export default class BasicCaringWorkChild extends React.Component{
     }
 
     onExecuteWork(){
-        this.service.executeWork(this.props.workCode, this.props.petId, this.refs.basicWorks.value).then(
-            response=>{
-                if(response && response.data)
-                    alert(response.data.message);
-            }
-        );
+        if(this.props.workCode && this.refs.basicWorks){
+            this.service.executeWork(this.props.workCode, this.props.petId, this.refs.basicWorks.value).then(
+                response=>{
+                    if(response && response.data)
+                        alert(response.data.message);
+                }
+            );
+        }
     }
     
     render(){
@@ -41,7 +44,7 @@ export default class BasicCaringWorkChild extends React.Component{
                         )
                     }
                     </select>  
-                    <button  type="button" class="btn btn-primary" onClick={this.onExecuteWork.bind(this)}>OK</button>
+                    <button  type="button" class="btn btn-primary" onClick={this.onExecuteWork}>OK</button>
                 </div>        
             </React.Fragment>
         );

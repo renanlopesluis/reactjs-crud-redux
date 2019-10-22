@@ -18,6 +18,7 @@ export default class PetListComponent extends React.Component{
  
         this.list();
         this.onRemove = this.onRemove.bind(this);
+        this.onSearch = this.onSearch.bind(this);
     }
 
     onRemove(id){
@@ -52,7 +53,7 @@ export default class PetListComponent extends React.Component{
                 <Menu/>
                 <div class="input-group">
                     <input type="text" class="form-control filter" id="filterName" name="filterName" 
-                    placeholder="search pets..." onChange={this.onSearch.bind(this)} value={this.state.search}/>
+                    placeholder="search pets..." onChange={this.onSearch} value={this.state.search}/>
                 </div>
                 <div class="container">
                     <h2 class="main">Pets</h2>

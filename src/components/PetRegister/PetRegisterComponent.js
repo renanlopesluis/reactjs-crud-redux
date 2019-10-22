@@ -19,6 +19,7 @@ class PetRegisterComponent extends React.Component{
             types: []
         }
         this.loadTypes();
+        this.onSave = this.onSave.bind(this);
     }
 
     componentDidMount(){
@@ -76,7 +77,7 @@ class PetRegisterComponent extends React.Component{
                                         class="form-control" placeholder="age"
                                         required/>
                                 </div>
-                                <Button color="primary" onClick={this.onSave.bind(this)}>Save</Button>
+                                <Button color="primary" onClick={this.onSave}>Save</Button>
                             </form>
                         </div>
                     </section>
