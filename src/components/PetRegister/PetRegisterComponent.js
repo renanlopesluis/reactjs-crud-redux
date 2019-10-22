@@ -46,7 +46,7 @@ class PetRegisterComponent extends React.Component{
     
     render(){
         return (
-            <div>
+            <React.Fragment>
                 <Menu/>
                 <div class="container">
                     <h2 class="main">Pet Register</h2>
@@ -81,7 +81,7 @@ class PetRegisterComponent extends React.Component{
                         </div>
                     </section>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }

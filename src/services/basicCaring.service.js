@@ -5,21 +5,21 @@ export default class BasicCaringService {
   baseUrl = 'http://localhost:8080/petstore/';
   bathUrl = "bath"
   hairCareUrl = "hair";
-  serviceOptions = [];
+  workOptions = [];
   hairCareTypes = [];
   bathTypes = [];
  
   constructor() { 
-    this.loadServiceOptions();
+    this.loadWorkOptions();
     this.loadBathTypes();
     this.loadHairCareTypes();
   }
 
-  getServiceOptions(){
-    return this.serviceOptions;
+  getWorkOptions(){
+    return this.workOptions;
   }
 
-  getServices(codeService){
+  getWorks(codeService){
     switch(codeService){
       case 1: return this.bathTypes;
       case 2: return this.hairCareTypes;
@@ -27,7 +27,7 @@ export default class BasicCaringService {
     }
   }
 
-  executeService(basiceServiceCode, petId, serviceCode){
+  executeWork(basiceServiceCode, petId, serviceCode){
     if(basiceServiceCode === 1){
       return this.doBath(petId, serviceCode);
     }else if(basiceServiceCode === 2){
@@ -43,8 +43,8 @@ export default class BasicCaringService {
     return axios.put(this.baseUrl.concat(this.hairCareUrl), {petId: petId, serviceCode: serviceCode });
   }
 
-  loadServiceOptions(){
-    this.serviceOptions = [
+  loadWorkOptions(){
+    this.workOptions = [
       {
         code: 1,
         description: "Bath"

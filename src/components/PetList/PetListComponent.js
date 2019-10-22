@@ -5,7 +5,7 @@ import PetService from '../../services/pet.service.js';
 import { Button } from 'reactstrap';
 import Menu from '../Menu/Menu.component.js';
 
-class PetListComponent extends React.Component{
+export default class PetListComponent extends React.Component{
     
     service = new PetService();
 
@@ -48,7 +48,7 @@ class PetListComponent extends React.Component{
             }
         );
         return (
-            <div>
+            <React.Fragment>
                 <Menu/>
                 <div class="input-group">
                     <input type="text" class="form-control filter" id="filterName" name="filterName" 
@@ -90,8 +90,7 @@ class PetListComponent extends React.Component{
                         </div>
                     </section>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }
-export default PetListComponent;
