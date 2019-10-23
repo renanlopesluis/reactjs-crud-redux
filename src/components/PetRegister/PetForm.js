@@ -15,14 +15,13 @@ export default class PetForm extends React.Component{
             petType: {},
             types: []
         }
-        this.onSave = this.onSave.bind(this);
     }
 
     componentDidMount(){
         this.refs.name.focus();
     }
 
-    onSave(event){;
+    onSave = (event) => {
         event.preventDefault();
         let pet = PetBuilder.build(null, this.refs.name.value, this.state.petType, this.refs.age.value);
         this.service.save(pet).then(

@@ -7,10 +7,9 @@ export default class PetSearch extends React.Component{
         this.state = {
             search: ''
         }
-        this.onChange = this.onChange.bind(this);
     }
 
-    onChange(event){
+    onChange = (event) =>{
         this.setState({
             search: event.target.value.substr(0,20)
         });

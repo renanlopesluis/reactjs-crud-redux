@@ -10,7 +10,6 @@ export default class BasicCaringWorkChild extends React.Component{
         this.state = {
             selectedWorkOption: 0
         }
-        this.onExecuteWork = this.onExecuteWork.bind(this);
     }
 
     loadBasicWorks(workCode){
@@ -19,7 +18,7 @@ export default class BasicCaringWorkChild extends React.Component{
         })
     }
 
-    onExecuteWork(){
+    onExecuteWork = () =>{
         if(this.props.workCode && this.refs.basicWorks){
             this.service.executeWork(this.props.workCode, this.props.petId, this.refs.basicWorks.value).then(
                 response=>{

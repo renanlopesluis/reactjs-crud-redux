@@ -5,10 +5,9 @@ export default class PetTable extends React.Component{
     
     constructor(props){
         super(props);
-        this.filterPets = this.filterPets.bind(this);
     }
 
-    filterPets(){
+    filterPets = () => {
         return this.props.pets.filter(
             (pet) => {
                 return pet && pet.name.toLowerCase().indexOf(this.props.search) !== -1;

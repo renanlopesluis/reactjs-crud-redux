@@ -13,11 +13,9 @@ export default class BasicCaringWorkParent extends React.Component{
             works: this.service.getWorkOptions(),
             selectedWorkOption: null
         }
-
-        this.onChange = this.onChange.bind(this);
     }
 
-    onChange(code){
+    onChange = (code) => {
         this.setState({
             selectedWorkOption: code
         });

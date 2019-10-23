@@ -9,10 +9,9 @@ export default class PetRemoval extends React.Component{
 
     constructor(props){
         super(props);
-        this.onRemove = this.onRemove.bind(this);
     }
 
-    onRemove(){
+    onRemove = () => {
         this.service.remove(this.props.id).then(
             response=>{
                 this.props.list();

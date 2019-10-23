@@ -12,7 +12,6 @@ export default class PetType extends React.Component{
             types: []
         }
         this.loadTypes();
-        this.onChange = this.onChange.bind(this);
     }
     
     loadTypes(){
@@ -25,7 +24,7 @@ export default class PetType extends React.Component{
         });
     }
 
-    onChange(){
+    onChange = ()=>{
         this.props.updatePetType(PetTypeBuilder.build(this.refs.type.value));
     }
     
