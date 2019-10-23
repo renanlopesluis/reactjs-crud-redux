@@ -26,7 +26,6 @@ export default class PetType extends React.Component{
     }
 
     onChange(){
-        debugger;
         this.props.updatePetType(PetTypeBuilder.build(this.refs.type.value));
     }
     
