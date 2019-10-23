@@ -1,6 +1,6 @@
 class PetTypeBuilder {
 
-    static build(id, description){
+    static build(id, description=null){
         return {
             id: id,
             description: description
