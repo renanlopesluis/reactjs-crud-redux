@@ -9,8 +9,8 @@ export default class PetProfileComponent extends React.Component{
     
     service = new PetService();
     
-    constructor(pros){
-        super(pros);
+    constructor(props){
+        super(props);
         this.state = {
             pet: {},
         }

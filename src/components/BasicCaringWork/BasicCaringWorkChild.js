@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BasicCaringService from '../../services/basicCaring.service.js';
 
 export default class BasicCaringWorkChild extends React.Component{
@@ -50,3 +51,7 @@ export default class BasicCaringWorkChild extends React.Component{
     }
 }
 
+BasicCaringWorkChild.propTypes = {
+    petId: PropTypes.number.isRequired,
+    workCode: PropTypes.number.isRequired
+}

@@ -9,9 +9,9 @@ export default class MenuComponent extends React.Component{
             <React.Fragment>
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar" href="/">
-                        <img src={require('../../assets/images/dog.svg')} />
+                        <img alt="" src={require('../../assets/images/dog.svg')} />
                             Paw Shop - PetStore 
-                        <img src={require('../../assets/images/cat.svg')}/>
+                        <img alt="" src={require('../../assets/images/cat.svg')}/>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

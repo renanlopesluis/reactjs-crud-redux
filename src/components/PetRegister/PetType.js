@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PetTypeService from '../../services/petType.service.js';
 import PetTypeBuilder from "../../builder/PetTypeBuilder.js";
 
@@ -46,4 +47,7 @@ export default class PetType extends React.Component{
             </React.Fragment>
         );
     }
+}
+PetType.propTypes = {
+    updatePetType: PropTypes.func
 }

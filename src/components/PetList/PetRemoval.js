@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import PetService from '../../services/pet.service.js';
 import { Button } from 'reactstrap';
@@ -6,10 +7,6 @@ import { Button } from 'reactstrap';
 export default class PetRemoval extends React.Component{
     
     service = new PetService();
-
-    constructor(props){
-        super(props);
-    }
 
     onRemove = () => {
         this.service.remove(this.props.id).then(
@@ -29,4 +26,9 @@ export default class PetRemoval extends React.Component{
             </React.Fragment>
         );
     }
+}
+
+PetRemoval.propTypes = {
+    id: PropTypes.number.isRequired,
+    list: PropTypes.func
 }

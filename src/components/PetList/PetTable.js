@@ -1,12 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PetRemoval from './PetRemoval';
 
 export default class PetTable extends React.Component{
-    
-    constructor(props){
-        super(props);
-    }
-
+  
     filterPets = () => {
         return this.props.pets.filter(
             (pet) => {
@@ -55,4 +52,9 @@ export default class PetTable extends React.Component{
             </React.Fragment>
         );
     }
+}
+PetTable.propTypes = {
+    pets: PropTypes.array.isRequired,
+    search: PropTypes.string,
+    list: PropTypes.func
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class PetSearch extends React.Component{
     
@@ -26,4 +27,8 @@ export default class PetSearch extends React.Component{
             </React.Fragment>
         );
     }
+}
+
+PetSearch.propTypes = {
+    updateSearch: PropTypes.func
 }
