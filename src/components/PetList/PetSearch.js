@@ -1,34 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export default class PetSearch extends React.Component{
-    
-    constructor(props){
-        super(props);
-        this.state = {
-            search: ''
-        }
-    }
+function onChange(event, list, dispatch){
+    let search = event.target.value ? event.target.value.substr(0,20) : undefined;
+    dispatch({
+        type: "Filter",
+        filteredList: filterPets(list, search)
+    })
+}
 
-    onChange = (event) =>{
-        this.setState({
-            search: event.target.value.substr(0,20)
+function filterPets(list, filter){
+    if (filter){
+        return list.filter((pet) => { 
+            return pet && pet.name.toLowerCase().indexOf(filter) !== -1
         });
-        this.props.updateSearch(this.state.search.toLowerCase());
     }
-
-    render(){
-        return (
-            <React.Fragment>
-                <div class="input-group">
-                    <input type="text" class="form-control filter" id="filterName" name="filterName" 
-                    placeholder="search pets..." onChange={this.onChange} value={this.state.search}/>
-                </div>
-            </React.Fragment>
-        );
-    }
+    return list;
+    
 }
 
-PetSearch.propTypes = {
-    updateSearch: PropTypes.func
-}
+const PetSearch = ({list, dispatch}) => (
+    <div class="input-group">
+        <input type="text" class="form-control filter" id="filterName" name="filterName" 
+        placeholder="search pets..." onChange={(event) => onChange(event, list, dispatch)} />
+    </div>
+
+);
+
+export default connect(state => ({list: state.petReducer.list}))(PetSearch)

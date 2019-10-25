@@ -1,46 +1,46 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './PetList.css';
+import Menu from '../Menu/Menu.component.js';
 import PetSearch from './PetSearch.js';
 import PetTable from './PetTable.js'
 import PetService from '../../services/pet.service.js';
-import Menu from '../Menu/Menu.component.js';
 
-export default class PetListComponent extends React.Component{
-    
-    service = new PetService();
+class PetListComponent extends React.Component{ 
 
-    constructor(pros){
-        super(pros);
-        this.state = {
-            pets: [],
-            search:''
-        }
- 
+    constructor(props){
+        super(props); 
         this.list();
     }
 
     list = () =>{
-        this.service.list().then((response)=>response.json())
+        const { dispatch } = this.props;
+        new PetService().list().then((response)=>response.json())
         .then((pets) => {
-            this.setState({
-                pets: pets
+            dispatch({
+                type: "List",
+                list: pets,
+                filteredList: pets
             })
-        });
-    }
-    
-    updateSearch = (newSearch)=>{
-        this.setState({
-            search: newSearch
-        })
+        }).catch(
+            error=>{
+                dispatch({
+                    type: "Failure",
+                    error: "Error"
+                })
+            }
+        );
     }
 
     render(){
         return (
             <React.Fragment>
                 <Menu/>
-                <PetSearch updateSearch={this.updateSearch}/>
-                <PetTable pets={this.state.pets} search={this.state.search} list={this.list}/>
+                <PetSearch />
+                <PetTable  />
             </React.Fragment>
         );
     }
 }
+
+export default connect(state => state.petReducer.list)(PetListComponent);

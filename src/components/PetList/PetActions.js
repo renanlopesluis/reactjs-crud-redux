@@ -1,17 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import PetService from '../../services/pet.service.js';
 import { Button } from 'reactstrap';
 
-export default class PetRemoval extends React.Component{
-    
-    service = new PetService();
-
+class PetActions extends React.Component{
+ 
     onRemove = () => {
-        this.service.remove(this.props.id).then(
+        const { dispatch } = this.props;
+        new PetService().remove(this.props.id).then(
             response=>{
-                this.props.list();
+                dispatch({
+                    type: "Remove",
+                    filteredList: this.props.list.filter(pet=>{
+                        return pet.id !== this.props.id
+                    })
+                })
             }
         );
     }
@@ -28,7 +33,8 @@ export default class PetRemoval extends React.Component{
     }
 }
 
-PetRemoval.propTypes = {
+PetActions.propTypes = {
     id: PropTypes.number.isRequired,
-    list: PropTypes.func
+    list: PropTypes.array.isRequired
 }
+export default connect(state => ({filteredList: state.petReducer.filteredList}))(PetActions)

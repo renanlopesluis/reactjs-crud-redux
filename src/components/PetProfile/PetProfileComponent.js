@@ -1,13 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './PetProfile.css';
 import PetInfo from './PetInfo.js';
 import PetService from '../../services/pet.service.js';
 import BasicCaringWork from '../BasicCaringWork/BasicCaringWork.js';
 import Menu from '../Menu/Menu.component.js';
 
-export default class PetProfileComponent extends React.Component{
-    
-    service = new PetService();
+class PetProfileComponent extends React.Component{
     
     constructor(props){
         super(props);
@@ -21,12 +20,22 @@ export default class PetProfileComponent extends React.Component{
         this.loadPet(params.id);
     }
 
-      loadPet(id){
-        this.service.get(id).then(response=>{
-            this.setState({
-                pet: response.data
-            });
-        });
+    loadPet(id){
+        const { dispatch } = this.props;
+        new PetService().get(id)
+        .then(pet=>{
+            dispatch({
+                type: "Get",
+                pet: pet.data
+            })
+        }).catch(
+            error=>{
+                dispatch({
+                    type: "Failure",
+                    error: "Error"
+                })
+            }
+        );
     }
     
     render(){
@@ -37,9 +46,9 @@ export default class PetProfileComponent extends React.Component{
                     <h2 class="main">Pet Profile</h2>
                     <section>
                         <div class="container">
-                            <form ref="petForm" method="post" >
-                               <PetInfo pet={this.state.pet}/>
-                               <BasicCaringWork petId={this.state.pet.id}/>
+                            <form ref="petForm">
+                               <PetInfo/>
+                               <BasicCaringWork/>
                             </form>
                         </div>
                     </section>
@@ -48,3 +57,4 @@ export default class PetProfileComponent extends React.Component{
         );
     }
 }
+export default connect(state => state.petReducer.pet)(PetProfileComponent);

@@ -1,18 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './BasicCaringWork.css';
-import BasicCaringWorkParent from './BasicCaringWorkParent.js';
+import BasicCaringWorkOptions from './BasicCaringWorkOptions.js';
 
-export default class BasicCaringWorkComponent extends React.Component{
+const BasicCaringWork = ({pet}) =>(
+    <React.Fragment>
+        <BasicCaringWorkOptions/>
+    </React.Fragment>
+);
 
-    render(){
-        return (
-            <React.Fragment>
-                <BasicCaringWorkParent petId={this.props.petId}/>
-            </React.Fragment>
-        );
-    }
-}
-BasicCaringWorkComponent.propTypes = {
-    petId: PropTypes.number.isRequired
-}
+export default connect(state =>  ({pet: state.petReducer.pet}))(BasicCaringWork);
