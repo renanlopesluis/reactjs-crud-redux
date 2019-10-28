@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PetActions from './PetActions';
 
 const PetTable = ({ filteredList }) =>(
-
     <div class="container">
         <h2 class="main">Pets</h2>
         <section>
@@ -20,7 +19,7 @@ const PetTable = ({ filteredList }) =>(
                     </thead>
                     <tbody>
                     {
-                        filteredList.map((pet)=>
+                       filteredList.map((pet)=>
                                 (
                                     <tr>
                                         <td>{pet.id}</td>
@@ -38,4 +37,4 @@ const PetTable = ({ filteredList }) =>(
         </section>
     </div>
     );
-    export default connect(state => ({filteredList: state.petReducer.filteredList}))(PetTable)
+    export default connect(state => ({filteredList: state.petReducer.filteredList ? state.petReducer.filteredList : []}))(PetTable)

@@ -22,14 +22,7 @@ class PetListComponent extends React.Component{
                 list: pets,
                 filteredList: pets
             })
-        }).catch(
-            error=>{
-                dispatch({
-                    type: "Failure",
-                    error: "Error"
-                })
-            }
-        );
+        });
     }
 
     render(){
