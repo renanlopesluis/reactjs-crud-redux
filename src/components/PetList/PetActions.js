@@ -26,7 +26,7 @@ class PetActions extends React.Component{
             <React.Fragment>
                 <td> 
                     <Button color="danger" onClick={this.onRemove}>Remove</Button>
-                    <Link to={{ pathname:'/pet/'+ this.props.id }} class="btn btn-success">Profile</Link>
+                    <Link to={{ pathname:'/pet/'+ this.props.id }} className="btn btn-success">Profile</Link>
                 </td>
             </React.Fragment>
         );

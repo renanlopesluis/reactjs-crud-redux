@@ -1,10 +1,10 @@
 class PetBuilder {
 
-    static build(id, name, type, age){
+    static build(id, name, petType, age){
         return  {
             id: id,
             name: name,
-            type: type,
+            petType: petType,
             age: age
         }
     }

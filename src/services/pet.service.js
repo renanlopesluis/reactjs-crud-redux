@@ -3,8 +3,9 @@ import CrudService from './crud.service.js';
 class PetService extends CrudService{
 
     constructor(){
-        super(['pet', 'pets']);
+        super('pets');
     }
+
 }
 
 export default PetService;

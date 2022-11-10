@@ -7,7 +7,7 @@ function onChange(event) {
 }
 
 const PetTypeOptions = ({list, dispatch}) => (
-    <select class="form-control" name="type" onChange={(event) => dispatch(onChange(event))} required>
+    <select className="form-control" name="type" onChange={(event) => dispatch(onChange(event))} required>
     {
         list.map((type)=>
             (

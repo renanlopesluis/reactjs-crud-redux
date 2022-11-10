@@ -42,10 +42,10 @@ class PetProfileComponent extends React.Component{
         return (
             <React.Fragment>
                 <Menu/>
-                <div class="container">
-                    <h2 class="main">Pet Profile</h2>
+                <div className="container">
+                    <h2 className="main">Pet Profile</h2>
                     <section>
-                        <div class="container">
+                        <div className="container">
                             <form ref="petForm">
                                <PetInfo/>
                                <BasicCaringWork/>

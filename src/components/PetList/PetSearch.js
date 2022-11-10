@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function onChange(event, list, dispatch){
-    let search = event.target.value ? event.target.value.substr(0,20) : undefined;
+    const search = event.target.value.toLowerCase();
     dispatch({
         type: "Filter",
         filteredList: filterPets(list, search)
@@ -12,7 +12,7 @@ function onChange(event, list, dispatch){
 function filterPets(list, filter){
     if (filter){
         return list.filter((pet) => { 
-            return pet && pet.name.toLowerCase().indexOf(filter) !== -1
+            return pet && pet.name.toLowerCase().includes(filter)
         });
     }
     return list;
@@ -20,8 +20,8 @@ function filterPets(list, filter){
 }
 
 const PetSearch = ({list, dispatch}) => (
-    <div class="input-group">
-        <input type="text" class="form-control filter" id="filterName" name="filterName" 
+    <div className="input-group">
+        <input type="text" className="form-control filter" id="filterName" name="filterName" 
         placeholder="search pets..." onChange={(event) => onChange(event, list, dispatch)} />
     </div>
 

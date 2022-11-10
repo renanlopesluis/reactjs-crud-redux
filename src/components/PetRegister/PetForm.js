@@ -17,20 +17,20 @@ function onSave (event, petType) {
 
 const PetForm = ({petType, dispatch}) => (
     <React.Fragment>
-        <div class="container">
-            <h2 class="main">Pet Register</h2>
+        <div className="container">
+            <h2 className="main">Pet Register</h2>
             <section>
-                <div class="container">
+                <div className="container">
                     <form name="petForm" method="post" >
-                        <div class="form-group">
-                            <label for="name">Name</label>
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
                             <input type="text" id="name" name="name"
-                                class="form-control" placeholder="name" required/>
+                                className="form-control" placeholder="name" required/>
                         </div>
                         <PetType />
-                        <div class="form-group">
-                            <label for="name">Age</label>
-                            <input type="number" id="age" class="form-control" 
+                        <div className="form-group">
+                            <label htmlFor="name">Age</label>
+                            <input type="number" id="age" className="form-control" 
                                 placeholder="age" required/>
                         </div>
                         <button color="primary" onClick={(event) => onSave(event, petType)}>Save</button>

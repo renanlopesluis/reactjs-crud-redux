@@ -29,8 +29,8 @@ class PetType extends React.Component{
     render(){
         return (
             <React.Fragment>
-                <div class="form-group">
-                    <label for="type">Type</label>
+                <div className="form-group">
+                    <label htmlFor="type">Type</label>
                     <PetTypeOptions/>
                 </div>              
             </React.Fragment>

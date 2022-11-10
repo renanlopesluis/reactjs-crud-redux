@@ -1,5 +1,5 @@
 import PetActionEnum from '../enums/PetActionEnum.js';
-export default class PetActionFactory{
+export default class PetActionStrategy{
 
    static instance(state, action){
         switch(action.type){

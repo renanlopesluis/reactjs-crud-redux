@@ -1,6 +1,6 @@
-import PetTypeActionFactory from '../factories/PetTypeActionFactory.js';
+import PetTypeActionStrategy from '../strategies/PetTypeActionStrategy.js';
 const INITIAL_STATE =  {petType:{}, list:[]};
 
 export default function petTypeReducer(state = INITIAL_STATE, action){
-    return PetTypeActionFactory.instance(state, action);
+    return PetTypeActionStrategy.instance(state, action);
 }

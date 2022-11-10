@@ -9,4 +9,4 @@ const BasicCaringWork = ({pet}) =>(
     </React.Fragment>
 );
 
-export default connect(state =>  ({pet: state.petReducer.pet}))(BasicCaringWork);
+export default connect(state =>  ({pet: state.workReducer.pet}))(BasicCaringWork);

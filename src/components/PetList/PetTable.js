@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import PetActions from './PetActions';
 
 const PetTable = ({ filteredList }) =>(
-    <div class="container">
-        <h2 class="main">Pets</h2>
+    <div className="container">
+        <h2 className="main">Pets</h2>
         <section>
-            <div class="form-group">
-                <table class="table">
+            <div className="form-group">
+                <table className="table">
                     <thead>
                         <tr>
                             <th>ID</th>

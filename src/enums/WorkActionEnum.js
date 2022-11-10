@@ -1,6 +1,6 @@
 const WorkActionEnum = {
     SELECT_WORK: "SelectWork",
-    SELECT_SUBWORK: "SelectSubwork",
+    SELECT_SUBWORK: "SelectSubWork",
     LIST: "List", 
     EXECUTE: "Execute"
 }
